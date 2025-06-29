@@ -1,10 +1,10 @@
-package com.eadproject.group23.user_app.data;
+package com.eadproject.group23.user_app.Data;
 
 import jakarta.persistence.*;
 
-@Entity(name = "userdata")
+@Entity(name = "UserData")
 @Table(name="user")
-public class userdata {
+public class UserData {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,13 +16,16 @@ public class userdata {
     @Column(name = "email")
     private String email;
 
+    public UserData() {
+    }
+
     @Column(name = "password")
     private String password;
 
     @Column(name = "role")
     private String role;
 
-    @Column(name = "grade", nullable = true)
+    @Column(name = "grade")
     private String grade;
 
     public int getId() {
@@ -69,10 +72,7 @@ public class userdata {
         this.grade = grade;
     }
 
-    public userdata() {
-    }
-
-    public userdata(int id, String name, String email, String password, String role, String grade) {
+    public UserData(int id, String name, String email, String password, String role, String grade) {
         this.id = id;
         this.name = name;
         this.email = email;
