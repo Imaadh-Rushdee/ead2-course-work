@@ -11,8 +11,8 @@ const UsersPage = () => {
   return (
     <div className="container mt-4">
       <h2>User Management</h2>
-      <AddUserForm onUserAdded={refreshUsers} />
       <UserList key={refreshKey} />
+      <AddUserForm onUserAdded={refreshUsers} />
     </div>
   );
 };

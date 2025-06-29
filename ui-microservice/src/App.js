@@ -8,6 +8,7 @@ import StudentFeesPage from './pages/StudentFeesPage';
 import StudentsByGradePage from './pages/UserPages';
 import LoginPage from './pages/LoginPage';
 import AttendancePage from './pages/AttendancePage';
+import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -18,7 +19,7 @@ function App() {
 
   // Navbar shown only if logged in
   const Navigation = () => (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" className="navbar">
       <Container>
         <Navbar.Brand as={Link} to="/">School Fee Management</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -48,10 +49,11 @@ function App() {
   );
 
   return (
-    <Router>
+  <Router>
+    <div className="d-flex flex-column min-vh-100">
       <Navigation />
 
-      <Container className="mt-4">
+      <Container className="flex-grow-1 mt-4">
         <Routes>
           {!user && (
             <Route path="/*" element={<LoginPage onLoginSuccess={setUser} />} />
@@ -65,7 +67,6 @@ function App() {
               <Route path="/student-fees" element={<StudentFeesPage />} />
               <Route path="/students-by-grade" element={<StudentsByGradePage />} />
               <Route path="/attendance" element={<AttendancePage />} />
-              {/* Redirect unknown routes to home */}
               <Route path="*" element={<Navigate to="/" />} />
             </>
           )}
@@ -74,18 +75,35 @@ function App() {
             <>
               <Route path="/" element={<StudentUnderDevelopment />} />
               <Route path="/student-info" element={<StudentUnderDevelopment />} />
-              {/* Redirect all other routes to student page */}
               <Route path="*" element={<Navigate to="/" />} />
             </>
           )}
         </Routes>
       </Container>
-    </Router>
-  );
-}
 
+      <Footer />
+    </div>
+  </Router>
+);
+}
 function Home() {
-  return <h2 className="text-center">Welcome to the School Fee Management UI</h2>;
+  return (
+    <div className="container">
+      <h2 className="text-center mb-4">Welcome to the School Fee Management</h2>
+      <p style={{ textAlign: "justify" }}><center>
+        Welcome to our School Fee Management System, a simple and efficient solution designed to streamline school payment management by making it easier to record fees, track payments, and reduce administrative workload. Built with Java (Spring Boot) for the backend, React for the frontend, and MySQL for secure data storage, our system ensures a smooth and modern user experience for schools and parents alike. Developed by our dedicated team:
+        <br /><br />
+        <span className="d-block text-center">Alice Fernando</span>
+        <span className="d-block text-center">Bob Silva</span>
+        <span className="d-block text-center">Carol Perera</span>
+        <span className="d-block text-center">Daniel Jayasinghe</span>
+        <span className="d-block text-center">Emily Wijeratne</span>
+        <br /><br />
+        This project reflects our commitment to creating practical tools that make school operations more organized and hassle-free.
+      </center>
+      </p>
+    </div>
+  );
 }
 
 function StudentUnderDevelopment() {
@@ -94,6 +112,16 @@ function StudentUnderDevelopment() {
       <h3>Student Portal</h3>
       <p>This page is under development for students.</p>
     </div>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-dark text-light py-3 mt-4">
+      <div className="container text-center">
+        © 2025 School Fee Management System. All rights reserved.
+      </div>
+    </footer>
   );
 }
 
