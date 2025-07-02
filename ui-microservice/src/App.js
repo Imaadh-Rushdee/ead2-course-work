@@ -93,11 +93,11 @@ function Home() {
       <p style={{ textAlign: "justify" }}><center>
         Welcome to our School Fee Management System, a simple and efficient solution designed to streamline school payment management by making it easier to record fees, track payments, and reduce administrative workload. Built with Java (Spring Boot) for the backend, React for the frontend, and MySQL for secure data storage, our system ensures a smooth and modern user experience for schools and parents alike. Developed by our dedicated team:
         <br /><br />
-        <span className="d-block text-center">Alice Fernando</span>
-        <span className="d-block text-center">Bob Silva</span>
-        <span className="d-block text-center">Carol Perera</span>
-        <span className="d-block text-center">Daniel Jayasinghe</span>
-        <span className="d-block text-center">Emily Wijeratne</span>
+        <span className="d-block text-center">COHNDSE251F-003 : M. I. Rushdee</span>
+        <span className="d-block text-center">COHNDSE251F-096 : S.R.D.Dahanayake</span>
+        <span className="d-block text-center">COHNDSE251F-067 : M. F. M. Rizni</span>
+        <span className="d-block text-center">COHNDSE251F-062 : H. M. Nishen</span>
+        <span className="d-block text-center">COHNDSE251F-091 : R. S. Jedidiah</span>
         <br /><br />
         This project reflects our commitment to creating practical tools that make school operations more organized and hassle-free.
       </center>

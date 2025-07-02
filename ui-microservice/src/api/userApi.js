@@ -11,7 +11,7 @@ export const addUser = (user) => axios.post(BASE_URL, user);
 
 export const updateUser = (user) => axios.post(BASE_URL, user);
 
-export const deleteUser = (id) => axios.delete(`${BASE_URL}/${id}`);
+export const deleteUser = (id) => axios.delete(`${BASE_URL}/delete/${id}`);
 
 export const getStudentsByGrade = (grade) =>
   axios.get(`${BASE_URL}/students/grades`, { params: { grade } });
