@@ -15,7 +15,6 @@ const AddPaymentPage = ({ onPaymentAdded }) => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // Calculate total amount based on selected fees
   const totalAmount = selectedFees
     .map(id => {
       const fee = studentFees.find(f => f.studentFeeId === id);
@@ -102,7 +101,6 @@ const AddPaymentPage = ({ onPaymentAdded }) => {
         onPaymentAdded();
       }
 
-      // Optional navigation after delay
       setTimeout(() => navigate('/payments'), 1500);
     } catch (err) {
       console.error(err);

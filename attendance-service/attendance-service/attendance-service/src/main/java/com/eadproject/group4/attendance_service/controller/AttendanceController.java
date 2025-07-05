@@ -31,7 +31,7 @@ public class AttendanceController {
     }
 
     @PostMapping
-    public AttendanceDTO createAttendance(@RequestBody AttendanceDTO attendanceDTO) {
+    public List<AttendanceDTO> createAttendance(@RequestBody List<AttendanceDTO> attendanceDTO) {
         return attendanceService.createAttendance(attendanceDTO);
     }
 

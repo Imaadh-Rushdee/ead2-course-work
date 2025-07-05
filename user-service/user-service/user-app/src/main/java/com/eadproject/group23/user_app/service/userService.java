@@ -33,15 +33,15 @@ public class UserService {
 
     public UserData createUser(UserData user) {
 
-
+        UserData savedUser = userRepo.save(user);
         if(user.getRole().equals("student")) {
             List<FeeDto> feeDtos = feeClient.getStudentFeeByGrades(user.getGrade());
             for(FeeDto dto : feeDtos){
-                StudentFeeDto studentFeeDto = new StudentFeeDto(user.getId(), dto.getFeeName(), dto.getFeeAmount(), "DUE", LocalDate.now());
+                StudentFeeDto studentFeeDto = new StudentFeeDto(savedUser.getId(), dto.getFeeName(), dto.getFeeAmount(), "DUE", LocalDate.now());
                 studentFeeClient.enterStudentFee(studentFeeDto);
             }
         }
-        return userRepo.save(user);
+        return savedUser;
     }
 
     public UserData updateUser(UserData user) {
