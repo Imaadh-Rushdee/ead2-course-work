@@ -17,6 +17,22 @@ public class StudentFeeController {
 
     @Autowired
     private StudentFeeService studentFeeService;
+
+    @PostMapping
+    public StudentFeeDto enterNewStudentFee(@RequestBody StudentFeeDto studentFeeDto){
+        StudentFeeEntity savedStudentFeeEntity = studentFeeService.addStudentFee(new StudentFeeEntity(studentFeeDto.getStudentId(),
+                studentFeeDto.getFeeName(),
+                studentFeeDto.getFeeAmount(),
+                studentFeeDto.getPaymentStatus(),
+                studentFeeDto.getAssignedDate()));
+        return new StudentFeeDto(savedStudentFeeEntity.getStudentFeeId(),
+                savedStudentFeeEntity.getStudentId(),
+                savedStudentFeeEntity.getFeeName(),
+                savedStudentFeeEntity.getFeeAmount(),
+                savedStudentFeeEntity.getPaymentStatus(),
+                savedStudentFeeEntity.getAssignedDate());
+    }
+
     //get a student fee
     @GetMapping
     public List<StudentFeeDto> getAllStudentFee(){

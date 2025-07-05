@@ -2,17 +2,26 @@ package com.eadproject.group23.user_app.Service;
 
 import com.eadproject.group23.user_app.Data.UserRepository;
 import com.eadproject.group23.user_app.Data.UserData;
+import com.eadproject.group23.user_app.dto.FeeDto;
+import com.eadproject.group23.user_app.dto.StudentFeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private FeeClient feeClient;
+
+    @Autowired
+    private StudentFeeClient studentFeeClient;
 
     public List<UserData> getAllUsers() {
         return userRepo.findAll();
@@ -23,6 +32,15 @@ public class UserService {
     }
 
     public UserData createUser(UserData user) {
+
+
+        if(user.getRole().equals("student")) {
+            List<FeeDto> feeDtos = feeClient.getStudentFeeByGrades(user.getGrade());
+            for(FeeDto dto : feeDtos){
+                StudentFeeDto studentFeeDto = new StudentFeeDto(user.getId(), dto.getFeeName(), dto.getFeeAmount(), "DUE", LocalDate.now());
+                studentFeeClient.enterStudentFee(studentFeeDto);
+            }
+        }
         return userRepo.save(user);
     }
 
